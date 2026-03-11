@@ -1267,6 +1267,7 @@
           tags_selected = []
           buttons.forEach(b => b.classList.remove("active"))
           sections.forEach(s => s.style.display = `block`)
+          projects.textContent = `Projects: ${sections.length}`;
           return
         }
 
