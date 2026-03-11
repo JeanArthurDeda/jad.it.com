@@ -48,6 +48,9 @@
       <div data-type-role="accordion-group" id="iap8s6">
         <details data-type-role="accordion" open id="ibo7jf" class="gjs-plg-accordion">
           <summary data-type-role="accordion-header" id="i80svp" class="gjs-plg-accordion-header">
+
+            <div id = "projects">Projects</div>
+
             <div data-type-role="accordion-marker" id="i1miytx" class="gjs-plg-accordion-marker"><svg
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="m7.4 8.6 4.6 4.6 4.6-4.6L18 10l-6 6-6-6 1.4-1.4Z"></path>
@@ -1253,6 +1256,8 @@
     document.addEventListener("DOMContentLoaded", function () {
       const buttons = document.querySelectorAll("[data-tag]");
       const sections = document.querySelectorAll("[data-tags]");
+      const projects = document.getElementById("projects");
+      projects.textContent = `Projects: ${sections.length}`;
 
       tags_selected = []
       function tag_button_pressed(button) {
@@ -1280,6 +1285,7 @@
         })
 
         // handle section
+        var num_projects = 0
         sections.forEach(section => {
           const tags = section.dataset.tags.split(" ");
           let display = `block`
@@ -1290,9 +1296,11 @@
                 display = `block`
             })
           }
+          if (display === `block`) num_projects = num_projects + 1
           if (display !== section.style.display)
             section.style.display = display
         })
+        projects.textContent = `Projects: ${num_projects}`;
       }
 
       buttons.forEach(button => {
